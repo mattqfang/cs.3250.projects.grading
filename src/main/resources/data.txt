@@ -1,0 +1,6 @@
+donovan,mitchell, 34
+Mike,conley,68
+bojan, bogdanovic, 75
+Rudy, Gobert, 55
+Joe, ingle, 78
+dante,exum,7
