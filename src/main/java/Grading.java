@@ -56,7 +56,8 @@ public class Grading {
 						.concat(s.substring(0, s.indexOf(",")).trim())
 						.concat(" ")
 						.concat(s.substring(s.lastIndexOf(",") + 1, s.length()).trim()))
-				.findFirst().orElseGet(() -> {
+				.findFirst()
+				.orElseGet(() -> {
 					return "List is Empty";
 				});
 	}
@@ -67,7 +68,8 @@ public class Grading {
 				.orElseGet(Collections::emptyList)
 				.stream()
 				.mapToDouble(s -> Double.valueOf(s.substring(s.lastIndexOf(",") + 1, s.length())))
-				.average().orElseGet(() -> {
+				.average()
+				.orElseGet(() -> {
 					return -1.0;	
 				});
 	}
