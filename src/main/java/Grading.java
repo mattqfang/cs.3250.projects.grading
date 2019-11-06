@@ -1,10 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -26,7 +23,6 @@ public class Grading {
 		System.out.println("3--------------------------");
 		System.out.println(GetAvgGrade(personList));
 		System.out.println("4--------------------------");
-		// System.out.println(test(personList).forEach(System.out::println));
 		GradeListOrderedByGrade(personList).forEach(System.out::println);
 
 	}
