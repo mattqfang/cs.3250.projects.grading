@@ -3,22 +3,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javax.net.ssl.SSLContext;
 
 public class Grading {
 	private static List<Person> personList = new ArrayList<Person>();
 	
 	public Grading() throws IOException {
-		File filePath = new File("src/main/resources/data.txt");
-	    String fullPath = filePath.getAbsolutePath();
+	    String fullPath = new File("src/main/resources/data.txt").getAbsolutePath();
 		
 		try (Stream<String> lines = Files.lines(Paths.get(fullPath))) {
 		

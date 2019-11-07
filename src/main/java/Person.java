@@ -1,5 +1,3 @@
-import java.util.Optional;
-
 public class Person {
 	private String firstName;
 	private String lastName;
