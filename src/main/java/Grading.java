@@ -24,7 +24,7 @@ public class Grading {
 		}
 	}
 
-	public Double GetGradeByPerson(String firstName, String lastName) {
+	public Double getGradeByPerson(String firstName, String lastName) {
 		return Optional.ofNullable(personList)
 				.orElseGet(Collections::emptyList)
 				.stream()
@@ -36,7 +36,7 @@ public class Grading {
 				});
 	}
 	
-	public String GetMaxGradeWithName() {
+	public String getMaxGradeWithName() {
 		return Optional.ofNullable(personList)
 				.orElseGet(Collections::emptyList)
 				.stream()
@@ -48,7 +48,7 @@ public class Grading {
 				});
 	}
 
-	public double GetAvgGrade() {
+	public double getAvgGrade() {
 		return Optional.ofNullable(personList)
 				.orElseGet(Collections::emptyList)
 				.stream()
@@ -59,7 +59,7 @@ public class Grading {
 				});			
 	}
 
-	public List<String> GradeListOrderedByGrade() {
+	public List<String> gradeListOrderedByGrade() {
 		return Optional.ofNullable(personList)
 				.orElseGet(Collections::emptyList)
 				.stream()

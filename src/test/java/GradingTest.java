@@ -15,36 +15,36 @@ public class GradingTest {
 	
 	@Test
 	public void testGradeOfPersonInList() {
-		assertEquals(7.0, grading.GetGradeByPerson("dante", "exum"), .1);
+		assertEquals(7.0, grading.getGradeByPerson("dante", "exum"), .1);
 	}
 	
 	@Test
 	public void testGradeOfPersonInListIgnoreCase() {
-		assertEquals(68.0, grading.GetGradeByPerson("MiKe", "ConLEy"), .1);
+		assertEquals(68.0, grading.getGradeByPerson("MiKe", "ConLEy"), .1);
 	}
 	
 	@Test
 	public void testGradeOfPersonNotInList() {
-		assertEquals(-1.0, grading.GetGradeByPerson("dantxe", "exum"), .1);
+		assertEquals(-1.0, grading.getGradeByPerson("dantxe", "exum"), .1);
 	}
 	
 	@Test
 	public void testGetMaxGradeWithName() {
-		assertEquals("Joe Ingle 78.0", grading.GetMaxGradeWithName());
+		assertEquals("Joe Ingle 78.0", grading.getMaxGradeWithName());
 	}
 
 	@Test
 	public void testNullAvgGrade() {
-		assertEquals(52.83, grading.GetAvgGrade(), 0.09);
+		assertEquals(52.83, grading.getAvgGrade(), 0.09);
 	}
 	
 	@Test
 	public void testGetSortedList() {
-		assertEquals("Ingle, Joe 78.0", grading.GradeListOrderedByGrade().get(0));
-		assertEquals("Bogdanovic, Bojan 75.0", grading.GradeListOrderedByGrade().get(1));
-		assertEquals("Conley, Mike 68.0", grading.GradeListOrderedByGrade().get(2));
-		assertEquals("Gobert, Rudy 55.0", grading.GradeListOrderedByGrade().get(3));
-		assertEquals("Mitchell, Donovan 34.0", grading.GradeListOrderedByGrade().get(4));
-		assertEquals("Exum, Dante 7.0", grading.GradeListOrderedByGrade().get(5));
+		assertEquals("Ingle, Joe 78.0", grading.gradeListOrderedByGrade().get(0));
+		assertEquals("Bogdanovic, Bojan 75.0", grading.gradeListOrderedByGrade().get(1));
+		assertEquals("Conley, Mike 68.0", grading.gradeListOrderedByGrade().get(2));
+		assertEquals("Gobert, Rudy 55.0", grading.gradeListOrderedByGrade().get(3));
+		assertEquals("Mitchell, Donovan 34.0", grading.gradeListOrderedByGrade().get(4));
+		assertEquals("Exum, Dante 7.0", grading.gradeListOrderedByGrade().get(5));
 	}
 }
