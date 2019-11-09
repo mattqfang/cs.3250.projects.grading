@@ -15,8 +15,7 @@ public class Grading {
 	public Grading() throws IOException {
 	    String fullPath = new File("src/main/resources/data.txt").getAbsolutePath();
 		
-		try (Stream<String> lines = Files.lines(Paths.get(fullPath))) {
-		
+		try (Stream<String> lines = Files.lines(Paths.get(fullPath))) {	
 		personList = lines
 				.map(s -> new Person(s.substring(0, s.indexOf(",")), 
 						s.substring(s.indexOf(",") + 1, s.lastIndexOf(",")), 
@@ -65,7 +64,7 @@ public class Grading {
 				.orElseGet(Collections::emptyList)
 				.stream()
 				.sorted((p1,p2) -> p2.getGrade().compareTo(p1.getGrade()))
-				.map(p -> p.getFirstName() + " " + p.getLastName() + " " + p.getGrade())
+				.map(p -> p.getLastName() + ", " + p.getFirstName() + " " + p.getGrade())
 				.collect(Collectors.toList());
 	}
 }
