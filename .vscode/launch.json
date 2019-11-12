@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GradingTest",
+            "request": "launch",
+            "mainClass": "cs3250.grading.GradingTest",
+            "projectName": "GradingSystem"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Program",
+            "request": "launch",
+            "mainClass": "cs3250.grading.Program",
+            "projectName": "GradingSystem"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Program",
+            "request": "launch",
+            "mainClass": "Program",
+            "projectName": "GradingSystem"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Grading",
+            "request": "launch",
+            "mainClass": "Grading",
+            "projectName": "GradingSystem"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}
