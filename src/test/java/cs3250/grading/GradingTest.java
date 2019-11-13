@@ -2,9 +2,6 @@ package cs3250.grading;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
@@ -32,16 +29,8 @@ public class GradingTest {
 
     @Test
     public void testListPeopleByGrade() {
-        List<Grades> expected = new ArrayList<Grades>();
-        List<Grades> actual = Grades.listPeopleByGrade(Grades.createList());
-        expected.add(new Grades("Joe", "ingle", "78"));
-        expected.add(new Grades("bojan", "bogdanovic", "75"));
-        expected.add(new Grades("Mike","conley","68"));
-        expected.add(new Grades("Rudy", "Gobert", "55"));
-        expected.add(new Grades("donovan","mitchell", "34"));
-        expected.add(new Grades("dante","exum","7"));
-        String[] exNames = expected.stream().map(n -> n.getFirstName() + " " + n.getLastName()).toArray(String[]::new);
-        String[] acNames = actual.stream().map(n -> n.getFirstName() + " " + n.getLastName()).toArray(String[]::new);
-        assertArrayEquals(exNames, acNames);
+        String[] expected = {"Joe ingle", "bojan bogdanovic", "Mike conley", "Rudy Gobert", "donovan mitchell", "dante exum"};
+        String[] actual = Grades.listPeopleByGrade(Grades.createList()).stream().map(n -> n.getFirstName() + " " + n.getLastName()).toArray(String[]::new); 
+        assertArrayEquals(expected, actual);
     }
 }
