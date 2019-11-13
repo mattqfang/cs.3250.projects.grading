@@ -29,8 +29,8 @@ public class GradingTest {
 
     @Test
     public void testListPeopleByGrade() {
-        String[] expected = {"Joe ingle", "bojan bogdanovic", "Mike conley", "Rudy Gobert", "donovan mitchell", "dante exum"};
-        String[] actual = Grades.listPeopleByGrade(Grades.createList()).stream().map(n -> n.getFirstName() + " " + n.getLastName()).toArray(String[]::new); 
+        String[] expected = {"ingle, Joe", "bogdanovic, bojan", "conley, Mike", "Gobert, Rudy", "mitchell, donovan", "exum, dante"};
+        String[] actual = Grades.listPeopleByGrade(Grades.createList()).stream().map(n -> n.getLastName() + ", " + n.getFirstName()).toArray(String[]::new); 
         assertArrayEquals(expected, actual);
     }
 }
