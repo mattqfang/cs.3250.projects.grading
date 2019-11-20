@@ -6,9 +6,6 @@ import java.io.File;
 
 import org.junit.Test;
 
-/*
-4. list all the persons (last name and first name) ordered by the grade
-*/
 
 public class GradingTest {
 	
@@ -20,6 +17,11 @@ public class GradingTest {
 	@Test
 	public void failedFileName() {
 		assertFalse(Grades.InitializeList("C:/NotAPath/"));
+	}
+	
+	@Test
+	public void nullFileName() {
+		assertFalse(Grades.InitializeList(null));
 	}
 	
 	@Test
@@ -43,7 +45,14 @@ public class GradingTest {
 	@Test
 	public void findGradeByPerson_null() {
 		Grades.InitializeList(filepath);
-		assertEquals(null, Grades.findGradeByPerson("george", null));
+		assertEquals(null, Grades.findGradeByPerson(null, null));
+	}
+	
+	@Test
+	public void findGradeByPerson_ignoreCase() {
+		Integer expectedGrade = 75;
+		Grades.InitializeList(filepath);
+		assertEquals(expectedGrade, Grades.findGradeByPerson("bOjaN", "Bogdanovic"));
 	}
 	
 	@Test
@@ -55,14 +64,20 @@ public class GradingTest {
 	@Test
 	public void findAverageGrade() {
 		Grades.InitializeList(filepath);
-		double average = (34+68+75+55+78+7)/6.0;
-		assertTrue(Grades.findAverageGrade() == average);		
+		double expectedAverage = (34+68+75+55+78+7)/6.0;
+		assertTrue(Grades.findAverageGrade() == expectedAverage);		
 	}
-	
 	
 	@Test
 	public void listAllPeopleByGrade() {
-		
+		Grades.InitializeList(filepath);
+		String expectedString = "joe ingle 78\n"
+				+ "bojan bogdanovic 75\n"
+				+ "mike conley 68\n"
+				+ "rudy gobert 55\n"
+				+ "donovan mitchell 34\n"
+				+ "dante exum 7";
+		assertTrue(expectedString.equals(Grades.listPersonsByGrade()));
 	}
 	
 }

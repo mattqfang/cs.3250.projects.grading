@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /*
 1. find the grade for a given person (first name and last name)
@@ -38,6 +40,8 @@ public class Grades {
 					.collect(Collectors.toList());	
 			return true;
 		} catch (IOException e) {
+			return false;
+		}catch(NullPointerException e) {
 			return false;
 		}
 	}
@@ -71,8 +75,11 @@ public class Grades {
 				.getAsDouble();
 	}
 	
-	public static void listPersonsByGrade() {
-		
+	public static String listPersonsByGrade() {
+		return students.stream()
+				.sorted((p1, p2) -> p2.getGrade().compareTo(p1.getGrade()))
+				.map(p-> p.toString())
+				.collect(Collectors.joining("\n"));
 	}
 	
 }
