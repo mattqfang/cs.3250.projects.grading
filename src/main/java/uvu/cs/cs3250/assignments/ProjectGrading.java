@@ -34,6 +34,7 @@ public class ProjectGrading {
 		
 		System.out.println(findStudentGrade("mike", "conley", students));
 		System.out.println(findStudentWithMaxGrade(students));
+		System.out.println(findAverageGrade(students));
 	}
 	
 	
@@ -50,22 +51,19 @@ public class ProjectGrading {
 		return students.stream()
 			.sorted(Comparator.comparing(Student::getGrade).reversed())
 			.findFirst()
-			.map(s -> s.getFirstName() + " " + s.getLastName())
+			.map(s -> s.getFirstName() + " " + s.getLastName() + " " + s.getGrade())
 			.orElseGet(() -> {
 				System.out.println("No students with grades");
 				return null;
 			});
 	}
-/*	
-	public static Double findAverageAgeByCity(String city, List<Student> students) {
-		return allPersons.stream()
-			.filter(p -> p.getAddress() != null)
-			.filter(p -> city.equalsIgnoreCase(p.getAddress().getCity()))
-			.mapToInt(p -> p.getAge())
+
+	public static Double findAverageGrade(List<Student> students) {
+		return students.stream()
+			.mapToInt(s -> s.getGrade())
 			.average()
 			.getAsDouble();
 	}
-	*/
 	
 	static class Student {
 		private String firstName;
