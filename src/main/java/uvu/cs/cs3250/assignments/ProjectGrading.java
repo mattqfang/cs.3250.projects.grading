@@ -27,14 +27,10 @@ public class ProjectGrading {
 			.map(s -> new Student(s[0], s[1], Integer.parseInt(s[2])))
 			.collect(Collectors.toList());
 		
-		//Print out each list of string array contents
-		students.stream()
-			.map(k -> k.getFirstName() + " " + k.getLastName() + " " + k.getGrade())
-			.forEach(System.out::println);
-		
 		System.out.println(findStudentGrade("mike", "conley", students));
 		System.out.println(findStudentWithMaxGrade(students));
 		System.out.println(findAverageGrade(students));
+		listAllStudentsByGrade(students);
 	}
 	
 	
@@ -63,6 +59,13 @@ public class ProjectGrading {
 			.mapToInt(s -> s.getGrade())
 			.average()
 			.getAsDouble();
+	}
+	
+	public static void listAllStudentsByGrade(List<Student> students) {
+		students.stream()
+			.sorted(Comparator.comparing(Student::getGrade))
+			.map(k -> k.getFirstName() + " " + k.getLastName() + " " + k.getGrade())
+			.forEach(System.out::println);
 	}
 	
 	static class Student {
