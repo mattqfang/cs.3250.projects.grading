@@ -1,7 +1,5 @@
 package project.grading.person;
 
-import java.util.Objects;
-
 public class Person {
     private String first;
     private String last;
@@ -44,26 +42,10 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Person)) {
-            return false;
-        }
-        Person person = (Person) o;
-        return Objects.equals(first, person.first) && Objects.equals(last, person.last) && Objects.equals(grade, person.grade);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(first, last, grade);
-    }
-
-    @Override
     public String toString() {
         return getLast().substring(0,1).toUpperCase() + getLast().substring(1).toLowerCase() // last
             + ", " + getFirst().substring(0,1).toUpperCase() + getFirst().substring(1).toLowerCase() // first
-            + ", " + getGrade().toString();
+            + ": " + getGrade().toString();
     }
 
     public static Person createPerson(String line) {

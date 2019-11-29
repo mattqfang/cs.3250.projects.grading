@@ -58,7 +58,7 @@ public class GradingSystem {
             this.personList = stream.map(l -> Person.createPerson(l)).collect(Collectors.toList());
             return true;
         } catch (final IOException e) {
-            System.out.println("FileReader.createList(): " + e);
+            System.out.println("GradingSystem.createList(): " + e);
             return false;
         }
     }

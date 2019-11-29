@@ -94,7 +94,7 @@ public class GradingSystemTest {
 
     @Test
     public void checkMaxGrade() {
-        String actual = "Ingle, Joe, 78";
+        String actual = "Ingle, Joe: 78";
         assertEquals(g.getPersonWithMaximumGrade(), actual);
     }
 
@@ -107,12 +107,12 @@ public class GradingSystemTest {
     @Test
     public void checkOrderedList() {
         String actual = Stream.of(
-            "Exum, Dante, 7",
-            "Mitchell, Donovan, 34",
-            "Gobert, Rudy, 55",
-            "Conley, Mike, 68",
-            "Bogdanovic, Bojan, 75",
-            "Ingle, Joe, 78"
+            "Exum, Dante: 7",
+            "Mitchell, Donovan: 34",
+            "Gobert, Rudy: 55",
+            "Conley, Mike: 68",
+            "Bogdanovic, Bojan: 75",
+            "Ingle, Joe: 78"
         ).collect(Collectors.toList()).toString();
         assertEquals(g.orderByGrade(), actual);
     }
