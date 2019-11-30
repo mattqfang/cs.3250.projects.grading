@@ -8,8 +8,9 @@ public class Person {
     public Person() {}
 
     public Person(String fname, String lname, Integer grade) {
-        this.fname = fname;
-        this.lname = lname;
+        //Calls functions to format input to printable version
+        this.setFname(fname);
+        this.setLname(lname);
         this.grade = grade;
     }
 
@@ -18,7 +19,7 @@ public class Person {
     }
 
     public void setFname(String fname) {
-        this.fname = fname;
+        this.fname = fname.substring(0,1).toUpperCase() + fname.substring(1).toLowerCase();
     }
 
     public String getLname() {
@@ -26,7 +27,7 @@ public class Person {
     }
 
     public void setLname(String lname) {
-        this.lname = lname;
+        this.lname = lname.substring(0,1).toUpperCase() + lname.substring(1).toLowerCase();
     }
 
     public Integer getGrade() {
