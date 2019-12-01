@@ -30,8 +30,14 @@ public class GradingSystem {
         return Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
                 .filter(s -> s.getFname().equalsIgnoreCase(first) && s.getLname().equalsIgnoreCase(last))
                 .map(Person::toString)
-                .findFirst()
-                .orElse(first + " " + last + " is not present in list");
+                .findFirst().orElse(first + " " + last + " is not present in list");
+    }
+
+    public String getHighestGrade() {
+        return Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
+                .sorted((stu1, stu2) -> stu2.getGrade().compareTo(stu1.getGrade()))
+                .map(Person::toString)
+                .findFirst().orElse("Student list is empty...");
     }
 
     public static void main(String[] args) {
@@ -42,8 +48,8 @@ public class GradingSystem {
         for (Person s: students) {
             System.out.println(s.toString());
         }
-        System.out.println("Searching for Conley, Mike");
-        System.out.println(test.Search("mike", "conley"));
-        System.out.println(test.Search("me", "conley"));
+
+        System.out.println("\nSearching for highest grade, (Ingle, Joe: 78%)");
+        System.out.println(test.getHighestGrade());
     }
 }
