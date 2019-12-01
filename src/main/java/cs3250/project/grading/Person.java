@@ -40,6 +40,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return getLname() + ", " + getFname() + ": " + getGrade().toString();
+        return getLname() + ", " + getFname() + ": " + getGrade().toString() + "%";
     }
 }
