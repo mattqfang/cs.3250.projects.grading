@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class GradingSystem {
     private static List<Person> students = new ArrayList<>();
 
-    public void ReadStudents() {
+    public GradingSystem() {
         String dataPath = new File("src/main/resources/data.txt").getAbsolutePath();
 
         try (Stream<String> entries = Files.lines(Paths.get(dataPath))) {
@@ -27,7 +27,7 @@ public class GradingSystem {
         }
     }
 
-    public String Search(String first, String last) {
+    public String SearchStudent(String first, String last) {
         return Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
                 .filter(s -> s.getFname().equalsIgnoreCase(first) && s.getLname().equalsIgnoreCase(last))
                 .map(Person::toString)
@@ -49,15 +49,24 @@ public class GradingSystem {
         return df.format(result);
     }
 
+    public void orderByGrade() {
+        Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
+                .sorted((stu1, stu2) -> stu2.getGrade().compareTo(stu1.getGrade()))
+                .map(s -> new Person(s.getFname(), s.getLname(), s.getGrade()))
+                .forEach(System.out::println);
+    }
+
+    public void printStudentList() {
+        students.stream().forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
         GradingSystem test = new GradingSystem();
-        test.ReadStudents();
 
-        System.out.println("Students Read");
-        for (Person s: students) {
-            System.out.println(s.toString());
-        }
-        System.out.println("Reading average score of all students");
-        System.out.println("Average is: " + test.getAverageGrade());
+        System.out.println("--- Students Read ---");
+        test.printStudentList();
+        System.out.println();
+        test.orderByGrade();
+
     }
 }
