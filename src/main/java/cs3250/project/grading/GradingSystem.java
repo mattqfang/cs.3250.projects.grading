@@ -26,6 +26,14 @@ public class GradingSystem {
         }
     }
 
+    public String Search(String first, String last) {
+        return Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
+                .filter(s -> s.getFname().equalsIgnoreCase(first) && s.getLname().equalsIgnoreCase(last))
+                .map(Person::toString)
+                .findFirst()
+                .orElseGet(() -> "Empty list");
+    }
+
     public static void main(String[] args) {
         GradingSystem test = new GradingSystem();
         test.ReadStudents();
@@ -34,5 +42,7 @@ public class GradingSystem {
         for (Person s: students) {
             System.out.println(s.toString());
         }
+        System.out.println("Searching for Conley, Mike");
+        System.out.println(test.Search("mike", "conley"));
     }
 }
