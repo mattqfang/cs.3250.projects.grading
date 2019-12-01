@@ -22,4 +22,14 @@ public class GradingTest {
 	public void testHighestGrade() {
 		assertEquals(Grading.FindHighestGrade(), "Joe, ingle, 78");
 	}
+	
+	@Test
+	public void testAverageGrade() {
+		assertEquals(Grading.FindAvgGrade(), 52);
+	}
+	
+	@Test
+	public void testListAll() {
+		Grading.ListAll();
+	}
 }
