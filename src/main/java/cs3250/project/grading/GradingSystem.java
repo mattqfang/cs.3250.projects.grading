@@ -41,32 +41,29 @@ public class GradingSystem {
                 .findFirst().orElse("Student list is empty...");
     }
 
-    public String getAverageGrade() {
+    public Double getAverageGrade() {
         DecimalFormat df = new DecimalFormat("0.00");
         Double result = Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
                 .mapToDouble(Person::getGrade)
                 .average().orElse(999.99);
-        return df.format(result);
+
+        return Double.parseDouble(df.format(result));
     }
 
-    public void orderByGrade() {
-        Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
+    public List<Person> orderByGrade() {
+        //Print Result
+//        Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
+//                .sorted((stu1, stu2) -> stu2.getGrade().compareTo(stu1.getGrade()))
+//                .map(s -> new Person(s.getFname(), s.getLname(), s.getGrade()))
+//                .forEach(System.out::println);
+
+        //Return for testing
+        return Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
                 .sorted((stu1, stu2) -> stu2.getGrade().compareTo(stu1.getGrade()))
-                .map(s -> new Person(s.getFname(), s.getLname(), s.getGrade()))
-                .forEach(System.out::println);
+                .map(s -> new Person(s.getFname(), s.getLname(), s.getGrade())).collect(Collectors.toList());
     }
 
     public void printStudentList() {
         students.stream().forEach(System.out::println);
-    }
-
-    public static void main(String[] args) {
-        GradingSystem test = new GradingSystem();
-
-        System.out.println("--- Students Read ---");
-        test.printStudentList();
-        System.out.println();
-        test.orderByGrade();
-
     }
 }
