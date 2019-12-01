@@ -31,7 +31,7 @@ public class GradingSystem {
                 .filter(s -> s.getFname().equalsIgnoreCase(first) && s.getLname().equalsIgnoreCase(last))
                 .map(Person::toString)
                 .findFirst()
-                .orElseGet(() -> "Empty list");
+                .orElse(first + " " + last + " is not present in list");
     }
 
     public static void main(String[] args) {
@@ -44,5 +44,6 @@ public class GradingSystem {
         }
         System.out.println("Searching for Conley, Mike");
         System.out.println(test.Search("mike", "conley"));
+        System.out.println(test.Search("me", "conley"));
     }
 }
