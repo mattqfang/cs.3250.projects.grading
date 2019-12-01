@@ -2,6 +2,7 @@ package cs3250.project.grading;
 
 import java.io.*;
 import java.nio.file.*;
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -40,6 +41,14 @@ public class GradingSystem {
                 .findFirst().orElse("Student list is empty...");
     }
 
+    public String getAverageGrade() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        Double result = Optional.ofNullable(students).orElseGet(Collections::emptyList).stream()
+                .mapToDouble(Person::getGrade)
+                .average().orElse(999.99);
+        return df.format(result);
+    }
+
     public static void main(String[] args) {
         GradingSystem test = new GradingSystem();
         test.ReadStudents();
@@ -48,8 +57,7 @@ public class GradingSystem {
         for (Person s: students) {
             System.out.println(s.toString());
         }
-
-        System.out.println("\nSearching for highest grade, (Ingle, Joe: 78%)");
-        System.out.println(test.getHighestGrade());
+        System.out.println("Reading average score of all students");
+        System.out.println("Average is: " + test.getAverageGrade());
     }
 }
