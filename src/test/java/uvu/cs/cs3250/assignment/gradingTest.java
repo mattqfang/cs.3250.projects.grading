@@ -10,26 +10,42 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class gradingTest {
-//	private Grading grading;
-//	
-//	@Before
-//	public void setUp() {
-//		grading = new grading();
-//	}
-//	
-//	@Test
-//	public void testGetMax() {
-//		List<Integer> data = Arrays.asList(1, 3, 8, 4, 6);
-//		int max = streamer.getMax(data);
-//		assertEquals(8, max);
-//	}
-//	
-//	@Test
-//	public void testGetMin() {
-//		List<Integer> data = Arrays.asList(1, 3, 8, 4, 6);
-//		int min = streamer.getMin(data);
-//		assertEquals(1, min);
-//	}
+	private uvu.cs.cs3250.assignment.grading grading;
+	
+	@Before
+	public void setUp() {
+		grading = new grading();
+	}
+	
+	@Test
+	public void testGetMax() {
+		
+		String max = grading.getMaxGrade();
+		assertEquals("joe ingle 78", max);
+	}
+	
+
+	@Test
+	public void testGetAve() {
+		double ave = grading.getAverageGrade();
+		double expected = 317.0/6.0;
+		assertEquals(expected, ave, 0.001);
+	}
+	@Test
+	public void getGradeDonovan() {
+		String firstName = "donovan";
+		String secondName = "mitchell";
+		int grade = grading.getGrade(firstName, secondName);
+		assertEquals(34, grade);
+	}
+	@Test
+	public void getGradeMike() {
+		String firstName = "Mike";
+		String secondName = "Conley";
+		int grade = grading.getGrade(firstName, secondName);
+		assertEquals(68, grade);
+	}
+	
 	
 	@Test
 	public void testStream() {
