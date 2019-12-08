@@ -3,6 +3,7 @@ package cs3250.projects.grading;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.*;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class Grading {
 	
-	List <Person> people;
+	List <Person> people = new ArrayList<Person>();
 	
 	public Grading() {
 		// Get the data from the file.
@@ -25,9 +26,10 @@ public class Grading {
 	    }
 	    
 	    lines.forEach(line -> {
-	    	line = line.toLowerCase().replaceAll("[^a-z,0-9]", "");
-	    	System.out.println(line);
-	    	String[] elems = line.split(",");
+	    	String[] elems = line.
+	    			toLowerCase().
+	    			replaceAll("[^a-z,0-9]", "").
+	    			split(",");
 	    	people.add(new Person(elems[0] + " " + elems[1], Integer.parseInt(elems[2])));
 	    });
 	}
@@ -53,9 +55,10 @@ public class Grading {
 	}
 	
 	public void PrintSortedList() {
-        List<Person> sortedList = people.stream()
-			.sorted(Comparator.comparingInt(Person::GetGrade))
-			.collect(Collectors.toList());
+        List<Person> sortedList = people.stream().
+        	sorted((f1, f2) -> Integer.compare(f2.GetGrade(), f1.GetGrade())).
+        	collect(Collectors.toList());
+        
         sortedList.forEach(item -> {
         	System.out.println(item.GetNameLastFirst());
         });

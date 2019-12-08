@@ -21,7 +21,8 @@ public class Tests {
 	
 	@Test
 	public void TestGetAverageGrade() throws Exception {
-		double answer = (34 + 68 + 75 + 55 + 78 + 7) / 6;
+		double answer = (34 + 68 + 75 + 55 + 78 + 7) / 6.0;
+		double average = grader.GetAverageGrade();
 		assertEquals(grader.GetAverageGrade(), answer, 0.1);
 	}
 	
@@ -30,8 +31,12 @@ public class Tests {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
 		
-	    String expectedOutput = "ingle, joe\nbogdanovic, bojan\nconley, mike\ngobert, rudy"
-	    		+ "\nmitchell, donovan\nexum, dante";
+	    String expectedOutput = "ingle, joe\r\n" + 
+	    		"bogdanovic, bojan\r\n" + 
+	    		"conley, mike\r\n" + 
+	    		"gobert, rudy\r\n" + 
+	    		"mitchell, donovan\r\n" + 
+	    		"exum, dante\r\n";
 	    
 	    grader.PrintSortedList();
 	    assertEquals(expectedOutput, outContent.toString());
