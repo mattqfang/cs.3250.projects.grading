@@ -15,43 +15,43 @@ public class GradingSystemTest {
 	@Test
 	public void testFindGradeByName_1() {
 		assertEquals(new Integer(34),
-				GradingSystem.findGradeByName("donovan", "mitchell"));
+				gs.findGradeByName("donovan", "mitchell"));
 	}
 	
 	@Test
 	public void testFindGradeByName_2() {
 		assertEquals(new Integer(7),
-				GradingSystem.findGradeByName("Dante", "Exum"));
+				gs.findGradeByName("Dante", "Exum"));
 	}
 	
 	@Test
 	public void testFindGradeByName_3() {
 		assertEquals(new Integer(55),
-				GradingSystem.findGradeByName("Rudy", "Gobert"));
+				gs.findGradeByName("Rudy", "Gobert"));
 	}
 	
 	@Test
 	public void testFindGradeByName_False() {
 		assertNotEquals(new Integer(88),
-				GradingSystem.findGradeByName("Joe", "ingle"));
+				gs.findGradeByName("Joe", "ingle"));
 	}
 	
 	@Test
 	public void testFindGradeByName_Null() {
 		assertEquals(null,
-				GradingSystem.findGradeByName("Luke", "Skywalker"));
+				gs.findGradeByName("Luke", "Skywalker"));
 	}
 	
 	@Test
 	public void testFindMaxGradeWithName() {
 		assertEquals(Pair.with(78, "Joe ingle"),
-				GradingSystem.findMaxGradeWithName());
+				gs.findMaxGradeWithName());
 	}
 	
 	@Test
 	public void testFindGradeAverage() {
 		assertEquals(new Double(52.833333333333336),
-				GradingSystem.findGradeAverage());
+				gs.findGradeAverage());
 		
 	}
 	
@@ -66,6 +66,6 @@ public class GradingSystemTest {
 		testList.add("exum dante");
 		
 		assertEquals(testList,
-				GradingSystem.nameListByGrade());
+				gs.nameListByGrade());
 	}
 }

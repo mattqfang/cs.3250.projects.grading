@@ -11,10 +11,11 @@ import java.util.stream.Collectors;
 import org.javatuples.Pair;
 
 public class GradingSystem {
-	static List<String> fileLines = Collections.emptyList();
+	List<String> fileLines = Collections.emptyList();
 	
 	public GradingSystem() {
-		String fileName = "C:\\Users\\lupus\\cs3250\\GradingSystem\\cs.3250.projects.grading\\src\\main\\resources\\data.txt";
+		//String fileName = "C:\\Users\\lupus\\cs3250\\GradingSystem\\cs.3250.projects.grading\\src\\main\\resources\\data.txt";
+		String fileName = "src/main/resources/data.txt";
 		try {
 			fileLines = Files.readAllLines(Paths.get(fileName));
 		}
@@ -27,7 +28,7 @@ public class GradingSystem {
 	
 	/* Function used to find the person's grade based
 	   on their name (first and last) */
-	public static Integer findGradeByName(String firstName, String lastName) {
+	public Integer findGradeByName(String firstName, String lastName) {
 		//String gradeString = "";
 		//gradeString = 
 		return fileLines.stream()
@@ -46,7 +47,7 @@ public class GradingSystem {
 	
 	/* Function used to find the highest grade in the file
 	   and the person's name who earned it */
-	public static Pair<Integer, String> findMaxGradeWithName() {
+	public Pair<Integer, String> findMaxGradeWithName() {
 		Integer maxGrade = fileLines.stream()
 				.mapToInt(s -> Integer.parseInt(s.substring(s.lastIndexOf(",") + 1).trim()))
 				.max()
@@ -66,7 +67,7 @@ public class GradingSystem {
 	
 	
 	//Function used to find the average of the grades in the file
-	public static Double findGradeAverage() {
+	public Double findGradeAverage() {
 		return fileLines.stream()
 				.mapToDouble(s -> Double.parseDouble(s.substring(s.lastIndexOf(",") + 1).trim()))
 				.average()
@@ -76,7 +77,7 @@ public class GradingSystem {
 	
 	/* Function used to create a list of the people's names
 	   ordered by their grades (from highest to lowest) */
-	public static List<String> nameListByGrade() {
+	public List<String> nameListByGrade() {
 		return fileLines.stream()
 			//.filter(s -> Integer.parseInt(s.substring(s.lastIndexOf(",") + 1)))\
 			.sorted(Comparator.comparingInt(s ->
