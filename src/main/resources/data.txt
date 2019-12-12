@@ -4,3 +4,5 @@ bojan, bogdanovic, 75
  Rudy, Gobert, 55
 Joe, ingle, 78
 dante,exum,7
+Kip, Summers, 65
+Kip, Summers, 42
